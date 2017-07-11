@@ -72,3 +72,50 @@ python app.py
 ``[ 98%] Building CXX object python/src/CMakeFiles/iothub_client_python.dir/iothub_client_python.cpp.o``
 
 If you run into this issue, check the **memory consumption** of the device using `free -m command` in another terminal window during that time. If you are running out of memory while compiling iothub_client_python.cpp file, you may have to temporarily increase the **swap space** to get more available memory to successfully build the Python client side device SDK library.
+
+### Increase the Raspberry Pi Swap File Size
+
+To compile Azure SDK on the Raspberry Pi you will almost certainly need to temporarily increase the size of the swap file.
+See [How to change Raspberry Pi's Swapfile Size on Raspbian](https://www.bitpi.co/2015/02/11/how-to-change-raspberry-pis-swapfile-size-on-rasbian/)
+
+**Be sure to change the swapfile size back to the default after the SDK has been compiled.**
+
+### Follow these steps
+
+#### Edit Swap File Configuration
+
+    
+    sudo nano /etc/dphys-swapfile
+
+The default value in Raspbian is:
+
+    CONF_SWAPSIZE=100
+
+Change this to:
+
+    CONF_SWAPSIZE=2048
+
+Save changes
+
+#### Restart Swap File Service
+
+
+    sudo /etc/init.d/dphys-swapfile stop
+    sudo /etc/init.d/dphys-swapfile start
+
+#### Verify Swap File Size
+
+
+    free -m
+
+The output should look like:
+
+    total     used     free   shared  buffers   cached
+    Mem:           435       56      379        0        3       16
+    -/+ buffers/cache:       35      399
+    Swap:         1023        0     1023
+
+#### Reset Swap File Size After compile
+
+Be sure to change the swapfile size back to the default after the SDK has been compiled.
+
