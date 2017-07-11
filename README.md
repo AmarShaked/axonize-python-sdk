@@ -50,15 +50,17 @@ python --version
 git clone --recursive https://github.com/Azure/azure-iot-sdk-python.git
 ```
 
-6. Navigate to the folder **build_all/linux**
+6. Increase Raspberry Pi Swap File size - see notes below
 
-7. Run the `./setup.sh` script to install the prerequisite packages and the dependent libraries.
+7. Navigate to the folder **build_all/linux**
 
-8. Run the `./build.sh` script.
+8. Run the `./setup.sh` script to install the prerequisite packages and the dependent libraries.
 
-9. After a successful build, the `iothub_client.so` Python extension module is copied to the [**device/samples**] folder. Copy the module to the Axonize SDK folder.
+9. Run the `./build.sh` script.
 
-10. Run the test app in the SDK folder.
+10. After a successful build, the `iothub_client.so` Python extension module is copied to the [**device/samples**] folder. Copy the module to the Axonize SDK folder.
+
+11. Run the test app in the SDK folder.
 ```bash
 python app.py
 ```
