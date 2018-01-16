@@ -19,7 +19,6 @@ client = IoTHubClient(CONNECTION_STRING, PROTOCOL)
 client.set_option("messageTimeout", MESSAGE_TIMEOUT)
 client.set_option("MinimumPollingTime", 2)
 client.set_message_callback(receive_message_callback, RECEIVE_CONTEXT)
-print client
 
 def send(payload, callback):
   payload_json = dumps(payload)
