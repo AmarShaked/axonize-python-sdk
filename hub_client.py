@@ -9,7 +9,7 @@ PROTOCOL = IoTHubTransportProvider.HTTP
 MESSAGE_TIMEOUT = 10000
 RECEIVE_CONTEXT = 0
 
-def receive_message_callback(message, shaked):
+def receive_message_callback(message, meta):
     message_buffer = message.get_bytearray()
     size = len(message_buffer)
     print ( "    Data: <<<%s>>> & Size=%d" % (message_buffer[:size].decode('utf-8'), size) )
