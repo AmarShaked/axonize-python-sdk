@@ -1,5 +1,6 @@
 from config import DEVICE_ID, PRODUCT_ID, APP_ID, HUB_KEY
 from datetime import datetime
+from time import sleep
 from hub_client import send
 
 def create_fake_event():
@@ -19,8 +20,10 @@ def callback(message, result, user_context):
 
 
 def main():
-  payload = create_fake_event()
-  send(payload, callback)
+  while True:
+  #payload = create_fake_event()
+  #send(payload, callback)
+    sleep(2)
 
 
 if __name__ == '__main__':
