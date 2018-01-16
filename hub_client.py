@@ -7,9 +7,17 @@ from iothub_client import IoTHubMessage, IoTHubMessageDispositionResult, IoTHubE
 CONNECTION_STRING = 'HostName=axonizestaginghub.azure-devices.net;DeviceId=%s;SharedAccessKey=%s' % (DEVICE_ID, HUB_KEY)
 PROTOCOL = IoTHubTransportProvider.HTTP
 MESSAGE_TIMEOUT = 10000
+RECEIVE_CONTEXT = 0
+
+def receive_message_callback(message):
+    message_buffer = message.get_bytearray()
+    size = len(message_buffer)
+    print ( "    Data: <<<%s>>> & Size=%d" % (message_buffer[:size].decode('utf-8'), size) )
+    return IoTHubMessageDispositionResult.ACCEPTED
 
 client = IoTHubClient(CONNECTION_STRING, PROTOCOL)
 client.set_option("messageTimeout", MESSAGE_TIMEOUT)
+client.set_message_callback(receive_message_callback, RECEIVE_CONTEXT)
 
 def send(payload, callback):
   payload_json = dumps(payload)
