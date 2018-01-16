@@ -4,7 +4,7 @@ import iothub_client
 from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult
 from iothub_client import IoTHubMessage, IoTHubMessageDispositionResult, IoTHubError, DeviceMethodReturnValue
 
-CONNECTION_STRING = 'HostName=dev-iot-Axonize.azure-devices.net;DeviceId=%s;SharedAccessKey=%s' % (DEVICE_ID, HUB_KEY)
+CONNECTION_STRING = 'HostName=axonizestaginghub.azure-devices.net;DeviceId=%s;SharedAccessKey=%s' % (DEVICE_ID, HUB_KEY)
 PROTOCOL = IoTHubTransportProvider.HTTP
 MESSAGE_TIMEOUT = 10000
 RECEIVE_CONTEXT = 0
